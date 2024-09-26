@@ -1,0 +1,23 @@
+package kannika:wasi-plugins@0.1.0;
+
+world wasi-restore-plugin {
+    use types.{outcome, kafka-record};
+
+    record context {
+        source-topic: string,
+        target-topic: string,
+    }
+
+    record target-topic-requirements {
+        no-partitions: u64,
+    }
+
+    // An initialisation function.
+    export init: func(ctx: context, cfg: option<string>) -> result<_, string>;
+
+    // Updates the requirements for the target topic
+    export update-target-topic-requirements: func(req: target-topic-requirements) -> target-topic-requirements;
+
+    // The filtering/transformation applied by the plugin
+    export transform: func(rec: kafka-record) -> outcome;
+}

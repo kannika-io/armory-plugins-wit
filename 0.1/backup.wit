@@ -1,0 +1,15 @@
+package kannika:wasi-plugins@0.1.0;
+
+world wasi-backup-plugin {
+    use types.{outcome, kafka-record};
+
+    record context {
+        topic: string,
+    }
+
+    // An initialisation function.
+    export init: func(ctx: context, cfg: option<string>) -> result<_, string>;
+
+    // The filtering/transformation applied by the plugin
+    export transform: func(rec: kafka-record) -> outcome;
+}

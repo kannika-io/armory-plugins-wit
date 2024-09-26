@@ -1,0 +1,37 @@
+package kannika:wasi-plugins@0.1.0;
+
+interface types {
+    variant outcome {
+        // The record was accepted by the plugin.
+        accepted(kafka-record),
+        // The record has been rejected by the plugin's logic.
+        rejected(kafka-record),
+        // The record could not be processed for some reason.
+        error(string)
+    }
+
+    record kafka-record {
+        key: option<list<u8>>,
+        headers: list<kafka-record-header>,
+        partition: option<s32>,
+        offset: option<s64>,
+        timestamp: option<kafka-record-timestamp>,
+        payload: option<list<u8>>,
+    }
+
+    record kafka-record-header {
+        key: string,
+        val: option<list<u8>>,
+    }
+
+    record kafka-record-timestamp {
+        kind: timestamp-kind,
+        time: s64,
+    }
+
+    enum timestamp-kind {
+        none,
+        create-time,
+        log-append-time,
+    }
+}
