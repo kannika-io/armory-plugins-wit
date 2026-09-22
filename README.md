@@ -15,6 +15,8 @@ It enables teams to back up Kafka topics, restore them across environments, and 
 - **Plugins guide:** [docs.kannika.io/user-guide/plugins](https://docs.kannika.io/user-guide/plugins/)
 - **Free trial:** [kannika.io](https://kannika.io)
 
+The Kannika Armory Plugin WIT Files are part of Kannika's [open source and source-available Kafka tools](https://www.kannika.io/kannika-guides/open-source-kafka-tools/)
+
 ---
 
 ## Repository Structure
